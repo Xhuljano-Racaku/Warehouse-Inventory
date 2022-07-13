@@ -9,6 +9,14 @@ public class Item {
 	private double price;
 	private String metal;
 	
+	
+	@Override
+	public String toString() {
+		return "Item [itemNumber=" + itemNumber + ", url=" + url + ", description=" + description + ", category="
+				+ category + ", price=" + price + ", metal=" + metal + "]";
+	}
+
+
 	public Item() {
 		super();
 	}

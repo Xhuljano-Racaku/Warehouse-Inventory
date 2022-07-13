@@ -2,7 +2,10 @@ package DAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 import merchandises.Item;
@@ -11,9 +14,9 @@ public class ItemDAO implements ItemDAOInterface, AutoCloseable {
 	
 	public static void main(String[] args) {
 		try(ItemDAO dao = new ItemDAO()) {
-			System.out.println("Connected");
+			System.out.println(dao.findAll());
 		}catch (Exception e){
-			System.out.println("Failed");
+			
 			e.printStackTrace();
 		}
 	}
@@ -43,14 +46,29 @@ public class ItemDAO implements ItemDAOInterface, AutoCloseable {
 	}
 	@Override
 	public boolean save(Item item) throws SQLException {
-		
-		return false;
+		String sql = "INSERT INTO ITEM(IMAGE, ITEM_DESCRIPTION, CATEGORY, PRICE, METAL) VALUES (?, ?, ?, ?, ?)";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, item.getUrl());
+		statement.setString(2, item.getDescription());
+		statement.setString(3, item.getCategory());
+		statement.setDouble(4, item.getPrice());
+		statement.setString(5, item.getMetal());
+		int rows = statement.executeUpdate();
+		return rows > 0 ? true: false;
 	}
 
 	@Override
 	public List<Item> findAll() throws SQLException {
-		
-		return null;
+		String sql = "SELECT ITEM_NUMBER, IMAGE, ITEM_DESCRIPTION, CATEGORY, PRICE, METAL FROM ITEM";
+		List<Item> results = new LinkedList<>();
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		while(rs.next()) {
+			Item item = new Item(rs.getString("IMAGE"), rs.getString("ITEM_DESCRIPTION"), rs.getString("CATEGORY"), rs.getDouble("PRICE"), rs.getString("METAL"));
+			item.setItemNumber(rs.getInt("ITEM_NUMBER"));
+			results.add(item);
+		}
+		return results;
 	}
 
 }

@@ -1,1 +1,44 @@
-<p>merchandise-list works!</p>
+<h1 style="padding-left: 10px;">Inventory</h1>
+
+<!-- <div style="padding: 10px;">
+  <div style="display: flex; justify-content: space-between">
+    <div>Item #</div>
+    <div>Image</div> 
+    <div>Description</div>
+    <div>Category</div>
+    <div>Price</div>
+    <div>Metal</div>
+    <div>Actions</div>
+  </div>
+  <li></li>
+</div> -->
+
+<table id="merchandise">
+  <tr>
+    <th>Item #</th>
+    <th>Image</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Price</th>
+    <th>Metal</th>
+    <th style="text-align: center;">Actions</th>
+  </tr>
+  <tr *ngFor="let item of allItems; let i = index">
+    <td style="text-align: center;">{{item.item_number}}</td>
+    <td>
+      <img [src]="item.item_image" [alt]="item.item_image">
+
+    </td>
+    <td>{{item.item_description}}</td>
+    <td>{{item.category}}</td>
+    <td>${{item.price}}</td>
+    <td>{{item.metal}}</td>
+    <td>
+      <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
+        <button (click)="editItem(i)">Edit</button>
+        <span>|</span>
+        <button (click)="deleteItem(i)">Remove</button>
+      </div>
+    </td>
+  </tr>
+</table>

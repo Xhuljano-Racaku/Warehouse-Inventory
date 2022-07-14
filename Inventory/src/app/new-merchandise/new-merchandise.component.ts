@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { InventoryService } from '../inventory.service';
 
 @Component({
   selector: 'app-new-merchandise',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewMerchandiseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private inventory: InventoryService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  onSubmit(form: any) {
+    this.inventory.onAddNewItem(form.value);
+    this.router.navigate(["/"])
+  }
 }

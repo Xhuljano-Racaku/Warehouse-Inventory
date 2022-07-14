@@ -1,1 +1,29 @@
-<p>new-merchandise works!</p>
+<div class="container">
+    
+    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+
+        <h1>New Item</h1>
+
+        <label for="image">Image (url)</label>
+        <input type="url" name="item_image" id="image" placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff" ngModel>
+        <!-- <input type="file"> -->
+
+        <label for="description">Item Description</label>
+        <input type="text" name="item_description" id="description" ngModel>
+
+        <label for="category">Category</label>
+        <input type="text" name="category" id="category" ngModel>
+
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" ngModel>
+
+        <label for="metal">Metal</label>
+        <input type="text" name="metal" id="metal" ngModel>
+
+        <div style="display: flex; justify-content: space-around; ">
+            <button type="submit" style="background-color: green; ">Save Item</button>
+            <button type="button" style="background-color: red;" [routerLink]="'/'">Cancel</button>
+        </div>
+
+    </form>
+</div>

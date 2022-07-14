@@ -1,6 +1,11 @@
-<div>
-    <h1>Jewelry Inventory</h1>
-    <button [routerLink]="['/add']">Add New Item</button>
-    <button [routerLink]="['/list']">Home</button>
-    <router-outlet></router-outlet>
-</div>
+<nav>
+  <div class="home">
+    <!-- <img src="../assets/jewelry_logo.jpg" alt="logo" width="50px" height="50px"> -->
+    <button>Home</button>
+  </div>
+  <button [routerLink]="'/add'">Add New Item</button>
+</nav>
+
+<router-outlet></router-outlet>
+<!-- <app-merchandise-list [allItems]="getAllItems()"></app-merchandise-list> -->
+<!-- <app-new-merchandise></app-new-merchandise> -->

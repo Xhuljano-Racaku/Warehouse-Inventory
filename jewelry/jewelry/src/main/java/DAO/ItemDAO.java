@@ -71,6 +71,28 @@ public class ItemDAO implements ItemDAOInterface, AutoCloseable {
 		return results;
 	}
 
+	@Override
+	public boolean update(Item item) throws SQLException {
+		String sql = "UPDATE ITEM SET IMAGE = ?, ITEM_DESCRIPTION = ?, CATEGORY = ?, PRICE = ?, METAL = ? WHERE ITEM_NUMBER = ?";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setString(1, item.getUrl());
+		statement.setString(2, item.getDescription());
+		statement.setString(3, item.getCategory());
+		statement.setDouble(4, item.getPrice());
+		statement.setString(5, item.getMetal());
+		int rows = statement.executeUpdate();
+		return rows > 0 ? true: false;
+	}
+
+	@Override
+	public boolean delete(Item item) throws SQLException {
+		String sql = "DELETE FROM ITEM WHERE ITEM_NUMBER = ?";
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setInt(1, item.getItemNumber());
+		int rows = statement.executeUpdate();
+		return rows > 0 ? true: false;
+	}
+
 }
 
 interface ItemDAOInterface {
@@ -79,4 +101,10 @@ interface ItemDAOInterface {
 	
 	//get
 	public List<Item> findAll() throws SQLException;
+	
+	// update
+	public boolean update(Item itme) throws SQLException;
+	
+	//delete
+	public boolean delete(Item item)throws SQLException;
 }

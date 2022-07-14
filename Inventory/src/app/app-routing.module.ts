@@ -6,7 +6,7 @@ import { EditMerchandiseComponent } from './edit-merchandise/edit-merchandise.co
 
 const routes: Routes = [
   {
-    path: '', component: MerchandiseListComponent
+    path: 'list', component: MerchandiseListComponent
   },
   {
     path: 'add', component: NewMerchandiseComponent

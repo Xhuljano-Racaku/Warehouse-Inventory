@@ -8,11 +8,12 @@ import { addItem, mockData, removeItem, updateItem } from './mock-data';
 })
 export class InventoryService {
 
-  constructor(private http: HttpClient) { }
+  url = 'http://localhost:8081/jewelry/items';
+  constructor(private httpClient: HttpClient) { }
 
-  getAllItems() {
-    // return this.http.get("http://localhost:8081/jewelry/items") as Observable<any>;
-    return mockData;
+  getAllItems() { 
+
+    return this.httpClient.get(this.url);
   }
   getItem(index: number) {
     return mockData[index];

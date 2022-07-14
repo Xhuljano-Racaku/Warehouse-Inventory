@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import DAO.ItemDAO;
 import merchandises.Item;
 
 @WebServlet(name="merchandise-servlet", urlPatterns="/items")
+//@WebFilter (urlPatterns = "http://localhost:4200")
 public class ItemServlet extends HttpServlet {
 	
 	
@@ -44,5 +46,31 @@ public class ItemServlet extends HttpServlet {
 		}
 		resp.setStatus(201);
 		System.out.println("Created Item");
+	}
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		Item item = mapper.readValue(req.getInputStream(), Item.class);
+		try(ItemDAO dao = new ItemDAO()){
+			dao.update(item);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		resp.setStatus(204);
+		System.out.println("Updated Item");
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		Item item = mapper.readValue(req.getInputStream(), Item.class);
+		try(ItemDAO dao = new ItemDAO()){
+			dao.delete(item);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		resp.setStatus(204);
+		System.out.println("Deleted Item");
 	}
 }

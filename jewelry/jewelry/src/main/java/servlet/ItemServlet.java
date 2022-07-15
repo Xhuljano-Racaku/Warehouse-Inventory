@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import DAO.ItemDAO;
 import merchandises.Item;
 
-@WebServlet(name="merchandise-servlet", urlPatterns="/items")
+@WebServlet(name="merchandise-servlet", urlPatterns="/items/*")
 //@WebFilter (urlPatterns = "http://localhost:4200")
 public class ItemServlet extends HttpServlet {
 	
@@ -33,6 +33,7 @@ public class ItemServlet extends HttpServlet {
 		String json = mapper.writeValueAsString(itemList);
 		resp.getWriter().print(json);
 		resp.setContentType("application/json");
+		System.out.println("Created Item");
 	}
 	
 	@Override

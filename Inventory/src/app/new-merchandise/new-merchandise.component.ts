@@ -10,20 +10,33 @@ import Item from '../models/Item';
 })
 export class NewMerchandiseComponent implements OnInit {
 
-  itemToSave: Item | any;
+  itemToSave: Item = new Item();
   constructor(private service: InventoryService) { }
   
   save(): void {
-    this.service.save(this.itemToSave).subscribe(data => {
+    this.service.save(this.itemToSave).subscribe((data) => {
       console.log(data);
     });
   }
 
+  urlImage : any;
+  onSelectFile(event:any) {
+    if (event.target.files) {
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+
+        reader.onload = (event:any) => {
+             this.urlImage= event.target.result;
+        }
+
+    }
+}
+
   ngOnInit(): void {
   }
 
-  onSubmit(form: any) {
-    // this.inventory.onAddNewItem(form.value);
-    // this.router.navigate(["/"])
-  }
+  // onSubmit(form: any) {
+  //   // this.inventory.onAddNewItem(form.value);
+  //   // this.router.navigate(["/"])
+  // }
  }

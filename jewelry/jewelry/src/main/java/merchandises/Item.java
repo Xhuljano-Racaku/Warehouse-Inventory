@@ -3,7 +3,7 @@ package merchandises;
 public class Item {
 	
 	private int itemNumber;
-	private String url;
+	private String itemImage;
 	private String description;
 	private String category;
 	private double price;
@@ -12,7 +12,7 @@ public class Item {
 	
 	@Override
 	public String toString() {
-		return "Item [itemNumber=" + itemNumber + ", url=" + url + ", description=" + description + ", category="
+		return "Item [itemNumber=" + itemNumber + ", itemImage=" + itemImage + ", description=" + description + ", category="
 				+ category + ", price=" + price + ", metal=" + metal + "]";
 	}
 
@@ -22,9 +22,9 @@ public class Item {
 	}
 	
 	
-	public Item(String url, String description, String category, double price, String metal) {
+	public Item(String itemImage, String description, String category, double price, String metal) {
 		super();
-		this.url = url;
+		this.itemImage = itemImage;
 		this.description = description;
 		this.category = category;
 		this.price = price;
@@ -38,11 +38,11 @@ public class Item {
 	public void setItemNumber(int itemNumber) {
 		this.itemNumber = itemNumber;
 	}
-	public String getUrl() {
-		return url;
+	public String getitemImage() {
+		return itemImage;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrl(String itemImage) {
+		this.itemImage = itemImage;
 	}
 	public String getDescription() {
 		return description;

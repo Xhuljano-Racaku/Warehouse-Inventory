@@ -20,6 +20,7 @@ export class InventoryService {
   save(item: Item): Observable<Item>{
     return this.httpClient.post<Item>(this.url, item);
   }
+  
 //   getItem(index: number) {
 //     return mockData[index];
 //   }

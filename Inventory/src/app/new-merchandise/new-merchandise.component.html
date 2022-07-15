@@ -1,27 +1,28 @@
 <div class="container">
     
-    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <form (ngSubmit)="save(); itemForm.reset()" #itemForm>
 
         <h1>New Item</h1>
 
-        <label for="image">Image (url)</label>
-        <input type="url" name="item_image" id="image" placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff" ngModel>
-        <!-- <input type="file"> -->
+        <label for="image">Image</label>
+        <img [src]="urlImage"> <br/>
+        <input [(ngModel)]="itemToSave.itemImage" type="file" (change)="onSelectFile($event)" name="item_image" id="image" accept="image/png, image/jpeg"
+         placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff">
 
         <label for="description">Item Description</label>
-        <input type="text" name="item_description" id="description" ngModel>
+        <input [(ngModel)]="itemToSave.description" type="text" name="item_description" id="description">
 
         <label for="category">Category</label>
-        <input type="text" name="category" id="category" ngModel>
+        <input [(ngModel)]="itemToSave.category" type="text" name="category" id="category">
 
         <label for="price">Price</label>
-        <input type="number" name="price" id="price" ngModel>
+        <input [(ngModel)]="itemToSave.price" type="number" name="price" id="price">
 
         <label for="metal">Metal</label>
-        <input type="text" name="metal" id="metal" ngModel>
+        <input [(ngModel)]="itemToSave.metal" type="text" name="metal" id="metal">
 
         <div style="display: flex; justify-content: space-around; ">
-            <button type="submit" style="background-color: green; ">Save Item</button>
+            <button type="submit" value="Save" style="background-color: green; ">Save</button>
             <button type="button" style="background-color: red;" [routerLink]="'/'">Cancel</button>
         </div>
 

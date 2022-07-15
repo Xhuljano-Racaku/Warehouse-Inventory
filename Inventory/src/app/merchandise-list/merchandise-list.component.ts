@@ -19,11 +19,6 @@ export class MerchandiseListComponent implements OnInit {
       this.itemList = data;
       console.log(this.itemList);
     })
-
-    // this.allItems = this.invetory.getAllItems();
-    // this.allItems = this.invetory.getAllItems().subscribe((data) => {
-    //   this.allItems = data.data;
-    // });
   }
   
   

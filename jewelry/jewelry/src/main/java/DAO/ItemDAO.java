@@ -80,8 +80,7 @@ public class ItemDAO implements ItemDAOInterface, AutoCloseable {
 		statement.setString(3, item.getCategory());
 		statement.setDouble(4, item.getPrice());
 		statement.setString(5, item.getMetal());
-		int rows = statement.executeUpdate();
-		return rows > 0 ? true: false;
+		return statement.executeUpdate() == 1;
 	}
 
 	@Override
@@ -89,8 +88,7 @@ public class ItemDAO implements ItemDAOInterface, AutoCloseable {
 		String sql = "DELETE FROM ITEM WHERE ITEM_NUMBER = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setInt(1, item.getItemNumber());
-		int rows = statement.executeUpdate();
-		return rows > 0 ? true: false;
+		return statement.executeUpdate() == 1;
 	}
 
 }

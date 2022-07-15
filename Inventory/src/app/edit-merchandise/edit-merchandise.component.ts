@@ -16,16 +16,16 @@ export class EditMerchandiseComponent implements OnInit {
      private router: Router) { }
 
   ngOnInit(): void {
-   this._activatedRoute.paramMap.subscribe((params: any)=> {
-    this.currentItem = this.inventory.getItem(+params.get("index"));
-    this.currentItemIndex = +params.get("index");
-   })
+  //  this._activatedRoute.paramMap.subscribe((params: any)=> {
+  //   this.currentItem = this.inventory.getItem(+params.get("index"));
+  //   this.currentItemIndex = +params.get("index");
+  //  })
   }
 
-  onSubmit(form: any) {
-    const updatedItem = {...form.value, "price": ""+form.value.price}
-    this.inventory.updateItem(form.value, this.currentItemIndex);
-    this.router.navigate(['/'])
-  }
+  // onSubmit(form: any) {
+  //   const updatedItem = {...form.value, "price": ""+form.value.price}
+  //   this.inventory.updateItem(form.value, this.currentItemIndex);
+  //   this.router.navigate(['/'])
+  // }
 
 }

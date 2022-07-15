@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InventoryService } from '../inventory.service';
+import Item from '../models/Item';
 
 @Component({
   selector: 'app-merchandise-list',
@@ -8,27 +9,33 @@ import { InventoryService } from '../inventory.service';
   styleUrls: ['./merchandise-list.component.css']
 })
 export class MerchandiseListComponent implements OnInit {
-  allItems?: any;
+  // allItems?: any;
 
-  constructor(private invetory: InventoryService, private router: Router) { }
+  constructor(private service: InventoryService) {} // constructor(private invetory: InventoryService, private router: Router) { }
 
+  itemList: Item[] | any;
   ngOnInit(): void {
-    this.allItems = this.invetory.getAllItems();
+    this.service.getAllItems().subscribe((data) => {
+      this.itemList = data;
+      console.log(this.itemList);
+    })
+
+    // this.allItems = this.invetory.getAllItems();
     // this.allItems = this.invetory.getAllItems().subscribe((data) => {
     //   this.allItems = data.data;
     // });
   }
   
   
-  deleteItem(index: number) {
-    let confirmation = confirm("Are you sure you want to delete this item?");
+  // deleteItem(index: number) {
+  //   let confirmation = confirm("Are you sure you want to delete this item?");
 
-    if(confirmation) {
-      this.invetory.onRemoveItem(index);
-    }
-  }
+  //   if(confirmation) {
+  //     this.invetory.onRemoveItem(index);
+  //   }
+  // }
 
-  editItem(index: number) {
-    this.router.navigate([`/edit`, ""+index]);
-  }
+  // editItem(index: number) {
+  //   this.router.navigate([`/edit`, ""+index]);
+  // }
 }

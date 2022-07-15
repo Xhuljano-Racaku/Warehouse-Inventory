@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { addItem, mockData, removeItem, updateItem } from './mock-data';
+// import { addItem, mockData, removeItem, updateItem } from './mock-data';
+import Item from './models/Item';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +12,27 @@ export class InventoryService {
   url = 'http://localhost:8081/jewelry/items';
   constructor(private httpClient: HttpClient) { }
 
-  getAllItems() { 
+  getAllItems(): Observable<Item[]>{ 
 
-    return this.httpClient.get(this.url);
-  }
-  getItem(index: number) {
-    return mockData[index];
+    return this.httpClient.get<Item[]>(this.url);
   }
 
-  onAddNewItem(newItem: any) { 
-    addItem(newItem);
+  save(item: Item): Observable<Item>{
+    return this.httpClient.post<Item>(this.url, item);
   }
+//   getItem(index: number) {
+//     return mockData[index];
+//   }
 
-  onRemoveItem(index: number) {
-    removeItem(index);
-  }
+//   onAddNewItem(newItem: any) { 
+//     addItem(newItem);
+//   }
 
-  updateItem(updatedItem: any, index: number) {
-    updateItem(updatedItem, index);
-  }
-}
+//   onRemoveItem(index: number) {
+//     removeItem(index);
+//   }
+
+//   updateItem(updatedItem: any, index: number) {
+//     updateItem(updatedItem, index);
+//   }
+ }

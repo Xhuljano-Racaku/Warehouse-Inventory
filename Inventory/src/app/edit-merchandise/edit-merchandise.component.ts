@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoryService } from '../inventory.service';
+import Item from '../models/Item';
 
 @Component({
   selector: 'app-edit-merchandise',
@@ -11,9 +12,14 @@ export class EditMerchandiseComponent implements OnInit {
   currentItem?: any;
   currentItemIndex: number =0;
 
-  constructor(private _activatedRoute: ActivatedRoute,
-     private inventory: InventoryService,
-     private router: Router) { }
+  itemToEdit: Item = new Item();
+  constructor(private service: InventoryService) { }
+
+  edit(): void {
+    this.service.save(this.itemToEdit).subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   ngOnInit(): void {
   //  this._activatedRoute.paramMap.subscribe((params: any)=> {

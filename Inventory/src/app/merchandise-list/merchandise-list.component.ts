@@ -11,9 +11,9 @@ import Item from '../models/Item';
 export class MerchandiseListComponent implements OnInit {
   // allItems?: any;
 
-  constructor(private service: InventoryService) {} // constructor(private invetory: InventoryService, private router: Router) { }
+  constructor(private service: InventoryService, private router: Router) {} // constructor(private invetory: InventoryService, private router: Router) { }
 
-  itemList: Item[] | any;
+  itemList?: Item[];
   ngOnInit(): void {
     this.service.getAllItems().subscribe((data) => {
       this.itemList = data;
@@ -21,16 +21,22 @@ export class MerchandiseListComponent implements OnInit {
     })
   }
   
+//   onClick () {
+//     this.router.navigateByUrl('/edit');
+// };
   
-  // deleteItem(index: number) {
-  //   let confirmation = confirm("Are you sure you want to delete this item?");
+  deleteItem(itemNumber: number) {
+    let confirmation = confirm("Are you sure you want to delete this item?");
 
-  //   if(confirmation) {
-  //     this.invetory.onRemoveItem(index);
-  //   }
-  // }
+    if(confirmation) {
+      this.service.onRemoveItem(itemNumber).subscribe(()=> {
+        this.itemList = this.itemList?.filter((item)=> item.itemNumber != itemNumber);
+    })
+  }
+}
 
-  // editItem(index: number) {
-  //   this.router.navigate([`/edit`, ""+index]);
-  // }
+//   editItem(index: number) {
+//     this.router.navigate([`/edit`, ""+index]);
+//   }
+// 
 }

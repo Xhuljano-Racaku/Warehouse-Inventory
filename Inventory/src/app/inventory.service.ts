@@ -9,7 +9,7 @@ import Item from './models/Item';
 })
 export class InventoryService {
 
-  url = 'http://localhost:8081/jewelry/items';
+  url = 'http://localhost:8081/jewelry/items/';
   constructor(private httpClient: HttpClient) { }
 
   getAllItems(): Observable<Item[]>{ 
@@ -20,7 +20,11 @@ export class InventoryService {
   save(item: Item): Observable<Item>{
     return this.httpClient.post<Item>(this.url, item);
   }
-  
+
+  edit(item: Item): Observable<Item>{
+    return this.httpClient.put<Item>(this.url, item);
+  }
+
 //   getItem(index: number) {
 //     return mockData[index];
 //   }
@@ -29,11 +33,16 @@ export class InventoryService {
 //     addItem(newItem);
 //   }
 
-//   onRemoveItem(index: number) {
-//     removeItem(index);
-//   }
+  // onRemoveItem(itemNumber: number) {
+  //   // removeItem(index);
+  //   return this.httpClient.delete<any>(this.url, {body: {"itemNumber":itemNumber}});
+  // }
+
+  onRemoveItem(itemNumber:number): any {
+      return this.httpClient.delete<any>(this.url, {"body":{"itemNumber": itemNumber}});
+    }
 
 //   updateItem(updatedItem: any, index: number) {
-//     updateItem(updatedItem, index);
+//     updateItem(updatedItem, index);S
 //   }
  }

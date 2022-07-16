@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'add', component: NewMerchandiseComponent
   },
   {
-    path: 'edit/:index', component: EditMerchandiseComponent
+    path: 'edit', component: EditMerchandiseComponent
   }
 ];
 

@@ -73,7 +73,7 @@ public class ItemDAO implements ItemDAOInterface, AutoCloseable {
 
 	@Override
 	public boolean update(Item item) throws SQLException {
-		String sql = "UPDATE ITEM SET IMAGE = ?, ITEM_DESCRIPTION = ?, CATEGORY = ?, PRICE = ?, METAL = ? WHERE ITEM_NUMBER = ?";
+		String sql = "UPDATE ITEM SET ITEM_NUMBER = ? IMAGE = ?, ITEM_DESCRIPTION = ?, CATEGORY = ?, PRICE = ?, METAL = ? WHERE ITEM_NUMBER = ?";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setString(1, item.getitemImage());
 		statement.setString(2, item.getDescription());

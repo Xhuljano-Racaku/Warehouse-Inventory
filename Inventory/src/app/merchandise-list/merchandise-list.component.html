@@ -22,19 +22,21 @@
     <th>Price</th>
     <th>Metal</th>
     <th style="text-align: center;">Actions</th>
-   </tr>
-   <tr *ngFor="let item of itemList">
+  </tr>
+  <tr *ngFor="let item of itemList; let i = index">
     <td>{{item.itemNumber}}</td>
-    <td>{{item.itemImage}}></td>
+    <td><img [src]="item.itemImage" alt="item image"></td>
     <td>{{item.description}}</td>
     <td>{{item.category}}</td>
     <td>{{item.price}}</td>
     <td>{{item.metal}}</td>
     <td>
-       <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
-        <button>Edit</button> <!--<button (click)="editItem(i)">Edit</button> -->
+      <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
+        <button>Edit</button>
+        <!--<button (click)="editItem(i)">Edit</button> -->
         <span>|</span>
-        <button>Remove</button> <!--<button (click)="deleteItem(i)">Remove</button> -->
+        <!-- <button>Remove</button> -->
+        <button (click)="deleteItem(item.itemNumber)">Remove</button>
       </div>
     </td>
    </tr>
@@ -49,7 +51,7 @@
     <td>${{item.price}}</td>
     <td>{{item.metal}}</td>
     <td>
-      <!-- <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
+       <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
         <button (click)="editItem(i)">Edit</button>
         <span>|</span>
         <button (click)="deleteItem(i)">Remove</button>
@@ -57,3 +59,6 @@
     <!-- </td>
   </tr> -->
 </table>
+<!-- <div>
+  <app-edit-merchandise *ngIf ="onClick"></app-edit-merchandise>
+</div> -->

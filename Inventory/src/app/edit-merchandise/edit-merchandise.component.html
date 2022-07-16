@@ -1,15 +1,14 @@
-<!-- <div class="container">
+<div class="container">
     
-    <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <form (ngSubmit)="edit(); itemForm.reset()" #itemForm>
 
         <h1>Edit Item</h1>
 
         <label for="image">Image (url)</label>
-        <input type="url" name="item_image" id="image" placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff" [(ngModel)]="currentItem.item_image"> -->
-        <!-- <input type="file"> -->
+        <input type="file" name="item_image" id="image" placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff" [(ngModel)]="currentItem.itemImage">
 
-        <!-- <label for="description">Item Description</label>
-        <input type="text" name="item_description" id="description" [(ngModel)]="currentItem.item_description">
+        <label for="description">Item Description</label>
+        <input type="text" name="item_description" id="description" [(ngModel)]="currentItem.description">
 
         <label for="category">Category</label>
         <input type="text" name="category" id="category" [(ngModel)]="currentItem.category">
@@ -22,8 +21,8 @@
 
         <div style="display: flex; justify-content: space-around; ">
             <button type="submit" style="background-color: green; ">Apply Changes</button>
-            <button type="button" style="background-color: red;" [routerLink]="'/'">Cancel</button>
+            <button type="button" style="background-color: red;" [routerLink]="'/list'">Cancel</button>
         </div>
 
     </form>
-</div> -->
+</div>

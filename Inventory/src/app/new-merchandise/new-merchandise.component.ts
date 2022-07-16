@@ -19,10 +19,10 @@ export class NewMerchandiseComponent implements OnInit {
     });
   }
 
-  urlImage : any;
+  urlImage?: string;
   onSelectFile(event:any) {
     if (event.target.files) {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
 
         reader.onload = (event:any) => {

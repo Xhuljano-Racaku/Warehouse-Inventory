@@ -44,6 +44,7 @@ public class ItemServlet extends HttpServlet {
 			dao.save(item);
 		}catch(Exception e) {
 			e.printStackTrace();
+
 		}
 		resp.setStatus(201);
 		System.out.println("Created Item");
@@ -70,6 +71,7 @@ public class ItemServlet extends HttpServlet {
 			dao.delete(item);
 		}catch(Exception e) {
 			e.printStackTrace();
+			
 		}
 		resp.setStatus(204);
 		System.out.println("Deleted Item");

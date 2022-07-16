@@ -6,7 +6,7 @@
 
         <label for="image">Image</label>
         <img [src]="urlImage"> <br/>
-        <input [(ngModel)]="itemToSave.itemImage" type="file" (change)="onSelectFile($event)" name="item_image" id="image" accept="image/png, image/jpeg"
+        <input [(ngModel)]="itemToSave.itemImage" type="file" name="item_image" id="image" accept="image/png, image/jpeg"
          placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff">
 
         <label for="description">Item Description</label>

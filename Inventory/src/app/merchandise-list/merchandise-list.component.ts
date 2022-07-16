@@ -35,8 +35,8 @@ export class MerchandiseListComponent implements OnInit {
   }
 }
 
-//   editItem(index: number) {
-//     this.router.navigate([`/edit`, ""+index]);
-//   }
-// 
+  editItem(index: number) {
+    this.router.navigate([`/edit`, ""+index]);
+  }
+
 }

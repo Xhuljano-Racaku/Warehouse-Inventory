@@ -28,7 +28,7 @@
     <td><img [src]="item.itemImage" alt="item image"></td>
     <td>{{item.description}}</td>
     <td>{{item.category}}</td>
-    <td>{{item.price}}</td>
+    <td>{{item.price | currency}} </td>
     <td>{{item.metal}}</td>
     <td>
       <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">

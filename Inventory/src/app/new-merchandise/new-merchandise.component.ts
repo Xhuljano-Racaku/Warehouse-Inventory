@@ -8,18 +8,17 @@ import Item from '../models/Item';
   templateUrl: './new-merchandise.component.html',
   styleUrls: ['./new-merchandise.component.css']
 })
-export class NewMerchandiseComponent implements OnInit {
+export class NewMerchandiseComponent {
 
   itemToSave: Item = new Item();
+  urlImage?: string;
+
   constructor(private service: InventoryService) { }
   
   save(): void {
-    this.service.save(this.itemToSave).subscribe((data) => {
-      console.log(data);
-    });
+    this.service.save(this.itemToSave).subscribe(() => {});
   }
 
-  urlImage?: string;
   onSelectFile(event:any) {
     if (event.target.files) {
         const reader = new FileReader();
@@ -28,15 +27,6 @@ export class NewMerchandiseComponent implements OnInit {
         reader.onload = (event:any) => {
              this.urlImage= event.target.result;
         }
-
     }
-}
-
-  ngOnInit(): void {
   }
-
-  // onSubmit(form: any) {
-  //   // this.inventory.onAddNewItem(form.value);
-  //   // this.router.navigate(["/"])
-  // }
- }
+}

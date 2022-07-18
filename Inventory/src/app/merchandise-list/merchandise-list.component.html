@@ -32,7 +32,7 @@
     <td>{{item.metal}}</td>
     <td>
       <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
-        <button>Edit</button>
+        <button (click)="editItem(item.itemNumber)">Edit</button>
         <!--<button (click)="editItem(i)">Edit</button> -->
         <span>|</span>
         <!-- <button>Remove</button> -->

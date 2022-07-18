@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'add', component: NewMerchandiseComponent
   },
   {
-    path: 'edit', component: EditMerchandiseComponent
+    path: 'edit/:id', component: EditMerchandiseComponent
   }
 ];
 

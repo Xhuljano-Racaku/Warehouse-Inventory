@@ -70,6 +70,7 @@ public class ItemDAO implements ItemDAOInterface, AutoCloseable {
 		}
 		return results;
 	}
+	
 
 	@Override
 	public boolean update(Item item) throws SQLException {
@@ -98,6 +99,7 @@ interface ItemDAOInterface {
 	//Create
 	public boolean save(Item item) throws SQLException;
 	
+
 	//get
 	public List<Item> findAll() throws SQLException;
 	

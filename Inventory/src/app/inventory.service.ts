@@ -25,10 +25,6 @@ export class InventoryService {
     return this.httpClient.put<Item>(this.url, item);
   }
 
-//   getItem(index: number) {
-//     return mockData[index];
-//   }
-
 //   onAddNewItem(newItem: any) { 
 //     addItem(newItem);
 //   }

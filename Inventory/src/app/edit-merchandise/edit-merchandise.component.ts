@@ -9,29 +9,26 @@ import Item from '../models/Item';
   styleUrls: ['./edit-merchandise.component.css']
 })
 export class EditMerchandiseComponent implements OnInit {
-  currentItem?: any;
-  currentItemIndex: number =0;
-
-  itemToEdit: Item = new Item();
-  constructor(private service: InventoryService) { }
-
-  edit(): void {
-    this.service.save(this.itemToEdit).subscribe((data) => {
-      console.log(data);
-    });
-  }
+  currentItem: any = new Item();
+  
+  constructor(private service: InventoryService, private router: Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-  //  this._activatedRoute.paramMap.subscribe((params: any)=> {
-  //   this.currentItem = this.inventory.getItem(+params.get("index"));
-  //   this.currentItemIndex = +params.get("index");
-  //  })
+   this._activatedRoute.paramMap.subscribe((params: any)=> {
+
+    this.service.getAllItems().subscribe((itemList) => {
+      this.currentItem = itemList.find((item)=> {
+        return item.itemNumber === +params.get("id");
+      });
+    });
+   })
   }
 
-  // onSubmit(form: any) {
-  //   const updatedItem = {...form.value, "price": ""+form.value.price}
-  //   this.inventory.updateItem(form.value, this.currentItemIndex);
-  //   this.router.navigate(['/'])
-  // }
+  edit(): void {
+    this.service.edit(this.currentItem).subscribe(() => {});
+    setTimeout(()=> {
+      this.router.navigate(['/list']);
+    },50)
 
+  }
 }

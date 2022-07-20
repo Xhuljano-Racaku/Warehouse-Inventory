@@ -16,7 +16,7 @@ export class NewMerchandiseComponent implements OnInit {
   msg: string ="";
   newItemForm: FormGroup = new FormGroup({});
 
-  constructor(private service: InventoryService,private router: Router) { }
+  constructor(private service: InventoryService, private router: Router) { }
 
   get itemImage() {
 	return this.newItemForm.get('itemImage');

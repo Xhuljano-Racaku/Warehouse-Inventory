@@ -1,30 +1,59 @@
+<ng-content></ng-content>
+
 <div class="container">
     
-    <form (ngSubmit)="save(); itemForm.reset()" #itemForm>
+    <form [formGroup]="newItemForm" (ngSubmit)="save()">
 
         <h1>New Item</h1>
 
         <label for="image">Image</label>
-        <img [src]="urlImage" height="150" width="150"> <br/>
-        <input [(ngModel)]="itemToSave.itemImage" type="file" (change)="onSelectFile($event)" name="item_image" id="image" accept="image/png, image/jpeg"
-         placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff">
-
+        <!-- <img [src]="urlImage" height="150" width="150"> <br/> -->
+        <!-- <input [(ngModel)]="itemToSave.itemImage" type="file" (change)="onSelectFile($event)" name="item_image" id="image" accept="image/png, image/jpeg"
+                 placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff"> -->
+        <input type="text" name="image" id="image" formControlName="itemImage">
+        
         <label for="description">Item Description</label>
-        <input [(ngModel)]="itemToSave.description" type="text" name="item_description" id="description">
-
+        <input type="text" name="description" id="description" formControlName="description"
+            [ngClass]="description?.errors?.['required'] && description?.touched ? 'inputError' : ''">
+        <div *ngIf="description?.errors?.['required'] && description?.touched" class="error">
+            Description is required
+        </div>
+        
         <label for="category">Category</label>
-        <input [(ngModel)]="itemToSave.category" type="text" name="category" id="category">
-
+        <input type="text" name="category" id="category" formControlName="category"
+            [ngClass]="category?.errors?.['required'] && category?.touched ? 'inputError' : ''">
+        <div *ngIf="category?.errors?.['required'] && category?.touched" class="error">
+            Category is required
+        </div>
+        
+        
         <label for="price">Price</label>
-        <input [(ngModel)]="itemToSave.price" type="number" name="price" id="price">
-
+        <input type="number" name="price" id="price" formControlName="price"
+            [ngClass]="price?.errors?.['required'] && price?.touched ? 'inputError' : ''" required>
+        <div *ngIf="(price?.errors?.['min'] || price?.errors?.['required']) && price?.touched" class="error">
+            Price needs to be at least $1
+        </div>
+        
         <label for="metal">Metal</label>
-        <input [(ngModel)]="itemToSave.metal" type="text" name="metal" id="metal">
-
+        <input type="text" name="metal" id="metal" formControlName="metal"
+            [ngClass]="metal?.errors?.['required'] && metal?.touched ? 'inputError' : ''">
+        <div *ngIf="metal?.errors?.['required'] && metal?.touched" class="error">
+            Metal is required
+        
+        </div>
+        
         <div style="display: flex; justify-content: space-around; ">
-            <button type="submit" value="Save" style="background-color: green; ">Save</button>
-            <button type="button" style="background-color: red;" [routerLink]="'/'">Cancel</button>
+            <button type="submit" value="Save" style="background-color: green; " [disabled]="!newItemForm.valid"
+                [ngStyle]="{'background-color': newItemForm.valid ? 'green': 'gray'}">Save</button>
+            <button type="button" style="background-color: red;" [routerLink]="'/list'">Cancel</button>
         </div>
 
     </form>
+
+    <!-- <div id="test">
+        
+        Errors: {{newItemForm.errors | json}}
+        <br>
+        Form Values: {{newItemForm.value |json}}
+    </div> -->
 </div>

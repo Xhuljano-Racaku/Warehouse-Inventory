@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewMerchandiseComponent } from './new-merchandise/new-merchandise.component';
 import { MerchandiseListComponent } from './merchandise-list/merchandise-list.component';
 import { EditMerchandiseComponent } from './edit-merchandise/edit-merchandise.component';
+import { ErrorComponent } from './error/error.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'edit/:id', component: EditMerchandiseComponent
+  },
+  {
+    path: '**', component: ErrorComponent
   }
 ];
 

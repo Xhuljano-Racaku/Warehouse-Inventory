@@ -3,7 +3,7 @@
     display: flex; 
     justify-content: center;
 }
-form {
+form, #test {
     display: flex; 
     flex-direction: column; 
     row-gap: 10px; 
@@ -16,4 +16,25 @@ form {
 button {
     color: white; 
     padding: 10px
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.inputError {
+    border-color: red;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 0 0 3px 3px gray;
+}
+
+button:disabled {
+    cursor: default;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InventoryService } from '../inventory.service';
 import Item from '../models/Item';
@@ -8,16 +9,52 @@ import Item from '../models/Item';
   templateUrl: './new-merchandise.component.html',
   styleUrls: ['./new-merchandise.component.css']
 })
-export class NewMerchandiseComponent {
+export class NewMerchandiseComponent implements OnInit {
 
   itemToSave: Item = new Item();
   urlImage: any;
   msg: string ="";
+  newItemForm: FormGroup = new FormGroup({});
 
-  constructor(private service: InventoryService) { }
+  constructor(private service: InventoryService,private router: Router) { }
+
+  get itemImage() {
+	return this.newItemForm.get('itemImage');
+  }
+
+  get description() {
+	return this.newItemForm.get('description');
+  }
+
+  get category() {
+	return this.newItemForm.get('category');
+  }
+
+  get price() {
+	return this.newItemForm.get('price');
+  }
+  
+  get metal() {
+	return this.newItemForm.get('metal');
+  }
+
+
+  ngOnInit(): void {
+	this.newItemForm = new FormGroup({
+		itemNumber: new FormControl(0),
+		itemImage: new FormControl('http://dummyimage.com/100x100.png/ff4444/ffffff', [Validators.required]),
+		description: new FormControl('', Validators.required),
+		category: new FormControl('', Validators.required),
+		price: new FormControl(0, Validators.min(1)),
+		metal: new FormControl('', Validators.required)
+	})
+  }
   
   save(): void {
-    this.service.save(this.itemToSave).subscribe(() => {});
+    this.service.save(this.newItemForm.value).subscribe(() => {});
+	setTimeout(()=> {
+		this.router.navigate(['/list']);
+	  },50)
   }
 
   onSelectFile(event: any) {

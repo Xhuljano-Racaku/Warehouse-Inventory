@@ -6,9 +6,10 @@
 
         <h1>Edit Item</h1>
 
-        <label for="image">Image (url)</label>
+        <label for="image">Image</label>
         <!-- <input type="text" name="item_image" id="image" placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff" [(ngModel)]="currentItem.itemImage"> -->
-        <img [src]="currentItem?.itemImage" alt="" width="100px" height="100px">
+        <!-- <img [src]="currentItem?.itemImage" alt="" width="100px" height="100px"> -->
+        <input type="text" name="image" [(ngModel)]="currentItem.itemImage">
 
         <label for="description">Item Description</label>
         <input type="text" name="item_description" id="description" [(ngModel)]="currentItem.description">

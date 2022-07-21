@@ -33,7 +33,7 @@ public class ItemServlet extends HttpServlet {
 		String json = mapper.writeValueAsString(itemList);
 		resp.getWriter().print(json);
 		resp.setContentType("application/json");
-		System.out.println("Created Item");
+		System.out.println("Fetched data");
 	}
 	
 	@Override

@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-// import { addItem, mockData, removeItem, updateItem } from './mock-data';
 import Item from './models/Item';
 
 @Injectable({

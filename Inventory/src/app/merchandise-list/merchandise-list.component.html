@@ -1,18 +1,4 @@
-<ng-content></ng-content>
-<!-- <h1 style="padding-left: 10px;  ">XR Jewel Pro</h1> -->
-
-<!-- <div style="padding: 10px;">
-  <div style="display: flex; justify-content: space-between">
-    <div>Item #</div>
-    <div>Image</div> 
-    <div>Description</div>
-    <div>Category</div>
-    <div>Price</div>
-    <div>Metal</div>
-    <div>Actions</div>
-  </div>
-  <li></li>
-</div> -->
+<!-- <ng-content></ng-content> -->
 
 <table id="merchandise">
   <tr>
@@ -27,6 +13,7 @@
     <th>Metal</th>
     <th style="text-align: center;">Actions</th>
   </tr>
+  <!-- <tr *ngFor="let item of itemList; let i = index"> -->
   <tr *ngFor="let item of itemList; let i = index">
     <td>{{item.itemNumber}}</td>
     <td><img [src]="item.itemImage" alt="item image" id="image"></td>
@@ -37,32 +24,9 @@
     <td>
       <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
         <button class="button" (click)="editItem(item.itemNumber)">Edit</button>
-        <!--<button (click)="editItem(i)">Edit</button> -->
         <span>|</span>
-        <!-- <button>Remove</button> -->
         <button class="button" (click)="deleteItem(item.itemNumber)">Remove</button>
       </div>
     </td>
    </tr>
-  <!--<tr *ngFor="let item of allItems; let i = index">
-    <td style="text-align: center;">{{item.itemNumber}}</td>
-    <td>
-      <img [src]="item.item_image" [alt]="item.itemImage">
-
-    </td>
-    <td>{{item.description}}</td>
-    <td>{{item.category}}</td>
-    <td>${{item.price}}</td>
-    <td>{{item.metal}}</td>
-    <td>
-       <div style="display: flex; justify-content: space-around;  align-items: center; border-color: transparent;">
-        <button (click)="editItem(i)">Edit</button>
-        <span>|</span>
-        <button (click)="deleteItem(i)">Remove</button>
-      </div> -->
-    <!-- </td>
-  </tr> -->
 </table>
-<!-- <div>
-  <app-edit-merchandise *ngIf ="onClick"></app-edit-merchandise>
-</div> -->

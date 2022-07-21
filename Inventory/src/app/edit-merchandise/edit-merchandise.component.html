@@ -7,8 +7,6 @@
         <h1>Edit Item {{this.editForm.get('itemNumber')?.value}}</h1>
 
         <label for="itemImage">Image</label>
-        <!-- <input type="text" name="item_image" id="image" placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff" [(ngModel)]="currentItem.itemImage"> -->
-        <!-- <img [src]="currentItem?.itemImage" alt="" width="100px" height="100px"> -->
         <input type="text" name="itemImage" id="itemImage" formControlName="itemImage">
 
         <label for="description">Item Description</label>

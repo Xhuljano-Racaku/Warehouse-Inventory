@@ -7,9 +7,6 @@
         <h1>New Item</h1>
 
         <label for="image">Image</label>
-        <!-- <img [src]="urlImage" height="150" width="150"> <br/> -->
-        <!-- <input [(ngModel)]="itemToSave.itemImage" type="file" (change)="onSelectFile($event)" name="item_image" id="image" accept="image/png, image/jpeg"
-                 placeholder="http://dummyimage.com/100x100.png/ff4444/ffffff"> -->
         <input type="text" name="image" id="image" formControlName="itemImage">
         
         <label for="description">Item Description</label>
@@ -49,11 +46,4 @@
         </div>
 
     </form>
-
-    <!-- <div id="test">
-        
-        Errors: {{newItemForm.errors | json}}
-        <br>
-        Form Values: {{newItemForm.value |json}}
-    </div> -->
 </div>

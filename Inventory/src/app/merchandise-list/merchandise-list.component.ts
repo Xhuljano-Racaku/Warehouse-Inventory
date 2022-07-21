@@ -9,6 +9,7 @@ import Item from '../models/Item';
   styleUrls: ['./merchandise-list.component.css']
 })
 export class MerchandiseListComponent implements OnInit {
+  isSorted: any = null;
 
   constructor(private service: InventoryService, private router: Router) {}
 
@@ -32,5 +33,24 @@ export class MerchandiseListComponent implements OnInit {
   editItem(item_number: number) {
     this.router.navigate([`/edit`, item_number]);
   }
+
+  getSort() {
+    return this.isSorted;
+  }
+
+ sortByPrice() {
+  if(this.isSorted === null) {
+    this.isSorted = true;
+    this.itemList = this.itemList?.sort((a,b)=> a.price-b.price);
+  } else if(this.isSorted === true) {
+    this.isSorted = false;
+    this.itemList = this.itemList?.sort((a,b)=> b.price-a.price);
+  } else {
+    this.isSorted = null;
+    this.service.getAllItems().subscribe((data) => {
+      this.itemList = data;
+    })
+  }
+ }
 
 }

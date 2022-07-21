@@ -20,7 +20,10 @@
     <th>Image</th>
     <th>Description</th>
     <th>Category</th>
-    <th>Price</th>
+    <th >
+      <span (click)="sortByPrice()" id="price">Price </span> 
+      <span >{{getSort() == null ? '-' : (getSort() ? '&darr;' : '	&uarr;')}}</span>
+    </th>
     <th>Metal</th>
     <th style="text-align: center;">Actions</th>
   </tr>

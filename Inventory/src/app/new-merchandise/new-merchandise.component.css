@@ -1,16 +1,17 @@
 .container {
     width: 100%; 
-    display: flex; 
+    display:flex;
     justify-content: center;
+    background-color: bisque;
 }
 form, #test {
     display: flex; 
     flex-direction: column; 
     row-gap: 10px; 
-    padding: 20px; 
-    width: 500px; 
-    border: 1px solid black; 
-    margin-top: 20px;
+    padding: 40px; 
+    width: 700px; 
+    border: 10px solid black; 
+    margin-top: 0px;
 }
 
 button {

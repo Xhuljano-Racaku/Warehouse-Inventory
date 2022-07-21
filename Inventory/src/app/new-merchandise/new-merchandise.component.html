@@ -29,7 +29,7 @@
         
         <label for="price">Price</label>
         <input type="number" name="price" id="price" formControlName="price"
-            [ngClass]="price?.errors?.['required'] && price?.touched ? 'inputError' : ''" required>
+            [ngClass]="(price?.errors?.['min'] || price?.errors?.['required']) && price?.touched ? 'inputError' : ''" required>
         <div *ngIf="(price?.errors?.['min'] || price?.errors?.['required']) && price?.touched" class="error">
             Price needs to be at least $1
         </div>

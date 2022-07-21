@@ -42,10 +42,10 @@ export class NewMerchandiseComponent implements OnInit {
   ngOnInit(): void {
 	this.newItemForm = new FormGroup({
 		itemNumber: new FormControl(0),
-		itemImage: new FormControl('http://dummyimage.com/100x100.png/ff4444/ffffff', [Validators.required]),
+		itemImage: new FormControl('http://dummyimage.com/100x100.png/ff4444/ffffff'),
 		description: new FormControl('', Validators.required),
 		category: new FormControl('', Validators.required),
-		price: new FormControl(0, Validators.min(1)),
+		price: new FormControl('', Validators.min(1)),
 		metal: new FormControl('', Validators.required)
 	})
   }

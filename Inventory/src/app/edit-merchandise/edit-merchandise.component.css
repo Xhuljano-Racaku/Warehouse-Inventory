@@ -22,3 +22,16 @@ button {
 button:hover {
     box-shadow: 0 0 3px 3px gray;
 }
+
+button:disabled {
+    cursor: default;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.inputError {
+    border-color: red;
+}

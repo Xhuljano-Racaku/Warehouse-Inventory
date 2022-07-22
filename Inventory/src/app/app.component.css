@@ -5,6 +5,7 @@ nav {
     padding: 10px; 
     background-color: rgb(238, 136, 2);
     height: 60px;
+    box-shadow: 0 0 5px 0 black;
 }
 
 .home {
@@ -14,18 +15,29 @@ nav {
     column-gap: 10px;
 }
 
-.button {
+.button, #addButton {
     background-color: bisque;
     cursor: pointer;
     width: 100px;
     height: 35px;
-    font-size :16px;
+    font-size :17px;
+    box-shadow: 0 0 2px 0 black;
+}
+
+#addButton {
+    font-size: 16px;
+}
+
+#addButton:hover {
+    background-color: rgb(250, 212, 166);
 }
 
 .button:hover {
     background-color: rgb(250, 212, 166);
 }
 
-h1 {
+#text {
+    padding-left: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 1px 1px rgb(238, 136, 2);
 }

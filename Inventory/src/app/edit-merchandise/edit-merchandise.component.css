@@ -9,8 +9,9 @@ form {
     row-gap: 10px; 
     padding: 40px; 
     width: 700px; 
-    border: 10px solid black; 
+    border: 7px solid rgb(238, 136, 2); 
     margin-top: 0px;
+    box-shadow: 0 0 20px 0 black;
 }
 
 button {
@@ -34,4 +35,8 @@ button:disabled {
 
 .inputError {
     border-color: red;
+}
+
+h1 {
+    text-shadow: 0.5px 0.5px rgb(238, 136, 2);
 }

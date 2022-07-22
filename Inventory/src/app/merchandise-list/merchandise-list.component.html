@@ -6,14 +6,14 @@
     <th>Image</th>
     <th>Description</th>
     <th>Category</th>
-    <th >
+    <th>
       <span (click)="sortByPrice()" id="price">Price </span> 
       <span >{{getSort() == null ? '-' : (getSort() ? '&darr;' : '	&uarr;')}}</span>
     </th>
     <th>Metal</th>
     <th style="text-align: center;">Actions</th>
   </tr>
-  
+
   <tr *ngFor="let item of itemList">
     <td>{{item.itemNumber}}</td>
     <td><img [src]="item.itemImage" alt="item image" id="image"></td>

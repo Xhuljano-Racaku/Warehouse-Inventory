@@ -19,6 +19,7 @@
     text-align: left;
     background-color: rgb(238, 136, 2);
     color: black  ;
+    box-shadow: 0 0 2px 0 black;
   }
 
   #image {
@@ -30,6 +31,12 @@
   width: 70px;
   height: 30px;
   cursor: pointer;
+  box-shadow: 0 0 3px 0 black;
+  background-color: bisque;
+}
+
+.button:hover {
+  background-color: rgb(250, 212, 166);
 }
 
 #price:hover {

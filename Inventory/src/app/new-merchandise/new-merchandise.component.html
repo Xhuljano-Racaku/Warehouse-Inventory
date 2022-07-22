@@ -6,17 +6,17 @@
 
         <h1>New Item</h1>
 
-        <label for="image">Image</label>
+        <label for="image"><b>Image</b></label>
         <input type="text" name="image" id="image" formControlName="itemImage">
         
-        <label for="description">Item Description</label>
+        <label for="description"><b>Item Description</b></label>
         <input type="text" name="description" id="description" formControlName="description"
             [ngClass]="description?.errors?.['required'] && description?.touched ? 'inputError' : ''">
         <div *ngIf="description?.errors?.['required'] && description?.touched" class="error">
             Description is required
         </div>
         
-        <label for="category">Category</label>
+        <label for="category"><b>Category</b></label>
         <input type="text" name="category" id="category" formControlName="category"
             [ngClass]="category?.errors?.['required'] && category?.touched ? 'inputError' : ''">
         <div *ngIf="category?.errors?.['required'] && category?.touched" class="error">
@@ -24,14 +24,14 @@
         </div>
         
         
-        <label for="price">Price</label>
+        <label for="price"><b>Price</b></label>
         <input type="number" name="price" id="price" formControlName="price"
             [ngClass]="(price?.errors?.['min'] || price?.errors?.['required']) && price?.touched ? 'inputError' : ''" required>
         <div *ngIf="(price?.errors?.['min'] || price?.errors?.['required']) && price?.touched" class="error">
             Price needs to be at least $1
         </div>
         
-        <label for="metal">Metal</label>
+        <label for="metal"><b>Metal</b></label>
         <input type="text" name="metal" id="metal" formControlName="metal"
             [ngClass]="metal?.errors?.['required'] && metal?.touched ? 'inputError' : ''">
         <div *ngIf="metal?.errors?.['required'] && metal?.touched" class="error">

@@ -4,6 +4,7 @@ nav {
     align-items: center; 
     padding: 10px; 
     background-color: rgb(238, 136, 2);
+    height: 60px;
 }
 
 .home {
@@ -17,10 +18,14 @@ nav {
     background-color: bisque;
     cursor: pointer;
     width: 100px;
-    height: 30px;
+    height: 35px;
     font-size :16px;
 }
 
 .button:hover {
     background-color: rgb(250, 212, 166);
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -34,10 +34,16 @@ export class MerchandiseListComponent implements OnInit {
     this.router.navigate([`/edit`, item_number]);
   }
 
+  // This return isSorted
   getSort() {
     return this.isSorted;
   }
 
+  /** This has 3 stages. If isSorted is null make it true and sort the price from 
+      lowest to most expensive. If it is true make it false and sort the price from
+      highest to lowest. Else make it null and fatch the data from the database,
+      and sort it the default way based on the itemNumber
+  */
  sortByPrice() {
   if(this.isSorted === null) {
     this.isSorted = true;

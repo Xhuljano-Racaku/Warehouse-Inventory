@@ -7,6 +7,8 @@
     <th>Description</th>
     <th>Category</th>
     <th>
+      <!-- This call sortByPrice() everytime you click price and sorts it based on isSorted value
+           null for default, true for lowest to highest and false for highest to lowest  -->
       <span (click)="sortByPrice()" id="price">Price </span> 
       <span >{{getSort() == null ? '-' : (getSort() ? '&darr;' : '	&uarr;')}}</span>
     </th>

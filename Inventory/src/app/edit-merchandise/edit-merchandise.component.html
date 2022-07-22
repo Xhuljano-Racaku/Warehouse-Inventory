@@ -1,14 +1,24 @@
 <!-- <ng-content></ng-content> -->
 
 <div class="container">
-    
+    <!-- checking in for errors in add  editform. Everything is filled out but if you leave a field empty
+        it will ask you to enter an input except the image field that is optional. The apply changes button 
+        will become disable if an error input displays. Until everything is clear then apply changes button
+        will be available to press and submit the changes
+    -->
     <form [formGroup]="editForm" (ngSubmit)="edit()">
-
+        
+        <!-- This get the item number of the item that will be updated and display it to the user,
+             so the user will know which item is updating -->
         <h1>Edit Item {{this.editForm.get('itemNumber')?.value}}</h1>
 
+        <!-- There is no validation for image field so it can be empty -->
         <label for="itemImage"><b>Image</b></label>
         <input type="text" name="itemImage" id="itemImage" formControlName="itemImage">
 
+        <!-- This checks if the field is touched and is the user don't type nothing and clicks outside
+             of it will throw the error message letting the user know that a description is required.
+             Same way works for category, price and metal -->
         <label for="description"><b>Item Description</b></label>
         <input type="text" name="item_description" id="description" formControlName="description"
             [ngClass]="description?.errors?.['required'] && description?.touched ? 'inputError' : ''">
@@ -23,6 +33,8 @@
             Category is required
         </div>
 
+        <!-- Price beside an empty field it will throw an error message even when the price is less than $1
+             So you can not enter negative numbers and 0  to 0.99 -->
         <label for="price"><b>Price</b></label>
         <input type="number" name="price" id="price" formControlName="price"
             [ngClass]="(price?.errors?.['min'] || price?.errors?.['required']) && price?.touched ? 'inputError' : ''">

@@ -24,20 +24,7 @@ export class InventoryService {
     return this.httpClient.put<Item>(this.url, item);
   }
 
-//   onAddNewItem(newItem: any) { 
-//     addItem(newItem);
-//   }
-
-  // onRemoveItem(itemNumber: number) {
-  //   // removeItem(index);
-  //   return this.httpClient.delete<any>(this.url, {body: {"itemNumber":itemNumber}});
-  // }
-
   onRemoveItem(itemNumber:number): any {
       return this.httpClient.delete<any>(this.url, {"body":{"itemNumber": itemNumber}});
     }
-
-//   updateItem(updatedItem: any, index: number) {
-//     updateItem(updatedItem, index);S
-//   }
  }

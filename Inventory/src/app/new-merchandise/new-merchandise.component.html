@@ -1,14 +1,21 @@
 <ng-content></ng-content>
 
 <div class="container">
-    
+    <!-- checking in for errors in add new form. Everything has to be filled except the image field
+         which is optional. Rest of the field if are not filled and after the touch screen will throw
+         the message that you will need to fill out this field. The save button will be disabled until
+         the all criteria has been met -->
     <form [formGroup]="newItemForm" (ngSubmit)="save()">
 
         <h1>New Item</h1>
 
+        <!-- There is no validation for image field so it can be empty -->
         <label for="image"><b>Image</b></label>
         <input type="text" name="image" id="image" formControlName="itemImage">
         
+        <!-- This checks if the field is touched and not written anything and you click outside of it
+             it will throw the error message letting the user know that a description is required.
+             Same way works for category, price and metal -->
         <label for="description"><b>Item Description</b></label>
         <input type="text" name="description" id="description" formControlName="description"
             [ngClass]="description?.errors?.['required'] && description?.touched ? 'inputError' : ''">
@@ -23,7 +30,8 @@
             Category is required
         </div>
         
-        
+        <!-- Price beside an empty field it will throw an error message even when the price is less than $1
+             So you can not enter negative numbers and 0  to 0.99 -->
         <label for="price"><b>Price</b></label>
         <input type="number" name="price" id="price" formControlName="price"
             [ngClass]="(price?.errors?.['min'] || price?.errors?.['required']) && price?.touched ? 'inputError' : ''" required>
@@ -39,6 +47,7 @@
         
         </div>
         
+        <!-- Save button is disabled if newItemForm is not valid -->
         <div style="display: flex; justify-content: space-around; ">
             <button type="submit" value="Save" style="background-color: green; " [disabled]="!newItemForm.valid"
                 [ngStyle]="{'background-color': newItemForm.valid ? 'green': 'gray'}">Save</button>

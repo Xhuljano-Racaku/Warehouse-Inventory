@@ -9,6 +9,8 @@ import Item from '../models/Item';
   templateUrl: './edit-merchandise.component.html',
   styleUrls: ['./edit-merchandise.component.css']
 })
+
+// Initialize the field all empty for editForm
 export class EditMerchandiseComponent implements OnInit {
   currentItem: any = new Item();
   editForm: FormGroup = new FormGroup({
@@ -20,6 +22,7 @@ export class EditMerchandiseComponent implements OnInit {
         metal: new FormControl(''),
   });
   
+  // Get all their current values
   get itemImage() {
     return this.editForm?.get('itemImage');
   }
@@ -46,11 +49,16 @@ export class EditMerchandiseComponent implements OnInit {
   ngOnInit(): void {
    this._activatedRoute.paramMap.subscribe((params: any)=> {
 
+    // Get the id of the current item and display it to the url
     this.service.getAllItems().subscribe((itemList) => {
       this.currentItem = itemList.find((item)=> {
         return item.itemNumber === +params.get("id");
       });
 
+      /** Autofill the editForm with the current values and all fields are required to fill
+          excpet the image field and the itemNumber which we can not update it since it's unique
+          Also set min for price to be 1
+      */
       this.editForm = new FormGroup({
         itemNumber: new FormControl(this.currentItem.itemNumber),
         itemImage: new FormControl(this.currentItem.itemImage),
@@ -64,6 +72,10 @@ export class EditMerchandiseComponent implements OnInit {
    })
   }
 
+  /** Update the item in editForm and render back to the list. I added a 50 milliseconds
+      waiting time so once we are back to the list page we can see the updated item witout
+      the need of refreshing the page
+  */
   edit(): void {
     console.log(this.editForm.value);
     this.service.edit(this.editForm.value).subscribe(() => {});

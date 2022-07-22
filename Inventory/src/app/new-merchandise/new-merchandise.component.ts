@@ -39,8 +39,8 @@ export class NewMerchandiseComponent implements OnInit {
   }
 
 
-// This is angular forms that I have used. It tells you which field is required
-// The only optional field is the itemImage
+// This is angular forms that I have used. It tells you which field is required and set
+// minimum for price to be 1. The only optional field is the itemImage
   ngOnInit(): void {
 	this.newItemForm = new FormGroup({
 		itemNumber: new FormControl(0),
